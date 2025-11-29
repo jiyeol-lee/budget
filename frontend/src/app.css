@@ -1,0 +1,342 @@
+@import 'tailwindcss';
+
+@theme {
+	/* ========================
+	 * TEXT COLORS (4 variants required)
+	 * ======================== */
+	--color-text-primary: var(--color-white);
+	--color-text-secondary: var(--color-gray-400);
+	--color-text-tertiary: var(--color-gray-500);
+	--color-text-quaternary: var(--color-gray-600);
+
+	/* Text on colored backgrounds */
+	--color-text-on-primary: var(--color-white);
+	--color-text-on-success: var(--color-white);
+	--color-text-on-warning: var(--color-black);
+	--color-text-on-danger: var(--color-white);
+	--color-text-on-info: var(--color-white);
+
+	/* Inverted text (for light backgrounds) */
+	--color-text-inverted: var(--color-gray-900);
+	--color-text-inverted-secondary: var(--color-gray-700);
+
+	/* ========================
+	 * BRAND / PRIMARY COLORS
+	 * ======================== */
+	--color-primary: var(--color-blue-500);
+	--color-primary-hover: var(--color-blue-600);
+	--color-primary-active: var(--color-blue-700);
+	--color-primary-light: var(--color-blue-100);
+	--color-primary-dark: var(--color-blue-800);
+	--color-primary-foreground: var(--color-white);
+
+	/* ========================
+	 * SEMANTIC STATUS COLORS
+	 * ======================== */
+	/* Success */
+	--color-success: var(--color-green-500);
+	--color-success-hover: var(--color-green-600);
+	--color-success-active: var(--color-green-700);
+	--color-success-light: var(--color-green-100);
+	--color-success-dark: var(--color-green-800);
+	--color-success-foreground: var(--color-white);
+
+	/* Warning */
+	--color-warning: var(--color-amber-500);
+	--color-warning-hover: var(--color-amber-600);
+	--color-warning-active: var(--color-amber-700);
+	--color-warning-light: var(--color-amber-100);
+	--color-warning-dark: var(--color-amber-800);
+	--color-warning-foreground: var(--color-black);
+
+	/* Danger / Error */
+	--color-danger: var(--color-red-500);
+	--color-danger-hover: var(--color-red-600);
+	--color-danger-active: var(--color-red-700);
+	--color-danger-light: var(--color-red-100);
+	--color-danger-dark: var(--color-red-800);
+	--color-danger-foreground: var(--color-white);
+
+	/* Info */
+	--color-info: var(--color-blue-500);
+	--color-info-hover: var(--color-blue-600);
+	--color-info-active: var(--color-blue-700);
+	--color-info-light: var(--color-blue-50);
+	--color-info-dark: var(--color-blue-800);
+	--color-info-bg: rgba(59, 130, 246, 0.1);
+	--color-info-foreground: var(--color-white);
+
+	/* ========================
+	 * SURFACE / BACKGROUND COLORS
+	 * ======================== */
+	--color-surface: var(--color-gray-800);
+	--color-surface-light: var(--color-gray-700);
+	--color-surface-lighter: var(--color-gray-600);
+	--color-surface-dark: var(--color-gray-900);
+	--color-surface-darker: var(--color-gray-950);
+
+	/* Elevated surfaces (cards, modals) */
+	--color-surface-elevated: var(--color-gray-700);
+	--color-surface-overlay: rgba(0, 0, 0, 0.6);
+
+	/* App background */
+	--color-background: var(--color-gray-900);
+	--color-background-alt: var(--color-gray-800);
+
+	/* ========================
+	 * BORDER COLORS
+	 * ======================== */
+	--color-border: var(--color-gray-700);
+	--color-border-light: var(--color-gray-600);
+	--color-border-dark: var(--color-gray-800);
+	--color-border-focus: var(--color-blue-500);
+	--color-border-error: var(--color-red-500);
+	--color-border-success: var(--color-green-500);
+
+	/* ========================
+	 * INPUT / FORM COLORS
+	 * ======================== */
+	--color-input-bg: var(--color-gray-700);
+	--color-input-border: var(--color-gray-600);
+	--color-input-focus: var(--color-blue-500);
+	--color-input-placeholder: var(--color-gray-500);
+	--color-input-disabled: var(--color-gray-800);
+
+	/* ========================
+	 * INTERACTIVE STATES
+	 * ======================== */
+	--color-hover: rgba(255, 255, 255, 0.05);
+	--color-active: rgba(255, 255, 255, 0.1);
+	--color-focus-ring: rgba(59, 130, 246, 0.5);
+	--color-disabled: var(--color-gray-600);
+	--color-disabled-text: var(--color-gray-500);
+
+	/* ========================
+	 * BUDGET STATUS SPECIFIC
+	 * ======================== */
+	--color-budget-safe: var(--color-green-500);
+	--color-budget-safe-bg: rgba(34, 197, 94, 0.1);
+	--color-budget-warning: var(--color-amber-500);
+	--color-budget-warning-bg: rgba(245, 158, 11, 0.1);
+	--color-budget-danger: var(--color-red-500);
+	--color-budget-danger-bg: rgba(239, 68, 68, 0.1);
+	--color-budget-over: var(--color-red-600);
+	--color-budget-over-bg: rgba(220, 38, 38, 0.1);
+
+	/* ========================
+	 * TABLE / LIST COLORS
+	 * ======================== */
+	--color-table-header: var(--color-gray-800);
+	--color-table-row: var(--color-gray-900);
+	--color-table-row-alt: var(--color-gray-800);
+	--color-table-row-hover: var(--color-gray-700);
+	--color-table-border: var(--color-gray-700);
+
+	/* ========================
+	 * SKELETON / LOADING
+	 * ======================== */
+	--color-skeleton: var(--color-gray-700);
+	--color-skeleton-shine: var(--color-gray-600);
+
+	/* ========================
+	 * NAVIGATION
+	 * ======================== */
+	--color-nav-bg: var(--color-gray-800);
+	--color-nav-item: var(--color-gray-400);
+	--color-nav-item-hover: var(--color-white);
+	--color-nav-item-active: var(--color-blue-500);
+	--color-nav-item-active-bg: rgba(59, 130, 246, 0.1);
+}
+
+body {
+	font-family:
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		Roboto,
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Improve touch targets on mobile */
+@media (max-width: 640px) {
+	button,
+	[role='button'],
+	a {
+		min-height: 44px;
+	}
+
+	input,
+	select,
+	textarea {
+		font-size: 16px;
+		/* Prevent zoom on iOS */
+	}
+}
+
+/* Custom scrollbar styles */
+.custom-scrollbar::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+	background: var(--color-surface);
+	border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+	background: var(--color-surface-lighter);
+	border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+	background: var(--color-text-tertiary);
+}
+
+/* Skeleton animation */
+@keyframes skeleton-pulse {
+	0%,
+	100% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.5;
+	}
+}
+
+.animate-skeleton {
+	animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Focus visible styles for better accessibility */
+*:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+}
+
+/* Hide focus ring for mouse users */
+*:focus:not(:focus-visible) {
+	outline: none;
+}
+
+/* Form validation styles */
+input:invalid:not(:placeholder-shown),
+select:invalid:not(:placeholder-shown) {
+	border-color: var(--color-danger);
+}
+
+input:valid:not(:placeholder-shown) {
+	border-color: var(--color-success);
+}
+
+/* Modal overlay animation */
+.modal-backdrop {
+	animation: fade-in 0.15s ease-out;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+/* Toast animation */
+.toast-enter {
+	animation: slide-in-right 0.3s ease-out;
+}
+
+@keyframes slide-in-right {
+	from {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+/* Safe area insets for mobile devices with notches */
+@supports (padding-top: env(safe-area-inset-top)) {
+	.safe-area-top {
+		padding-top: env(safe-area-inset-top);
+	}
+
+	.safe-area-bottom {
+		padding-bottom: env(safe-area-inset-bottom);
+	}
+}
+
+/* Responsive table wrapper */
+.table-responsive {
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+	overflow: hidden;
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.animate-spin {
+	animation: spin 1s linear infinite;
+}
+
+/* Smooth transitions for interactive elements */
+button,
+a,
+input,
+select,
+textarea {
+	transition-property: color, background-color, border-color, box-shadow;
+	transition-duration: 150ms;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Better text rendering */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	text-rendering: optimizeLegibility;
+}
+
+/* Print styles */
+@media print {
+	.no-print {
+		display: none !important;
+	}
+
+	body {
+		background: white;
+	}
+
+	.shadow,
+	.shadow-sm,
+	.shadow-md,
+	.shadow-lg {
+		box-shadow: none !important;
+	}
+}
