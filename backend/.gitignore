@@ -1,0 +1,33 @@
+# Binary outputs
+budget-tracker
+/server
+*.exe
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test outputs
+coverage.out
+*.test
+
+# Vendor (if not using modules)
+vendor/
