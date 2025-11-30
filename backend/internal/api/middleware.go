@@ -17,7 +17,7 @@ type CORSConfig struct {
 // DefaultCORSConfig returns default CORS configuration for development
 func DefaultCORSConfig() CORSConfig {
 	return CORSConfig{
-		AllowedOrigins: []string{"http://localhost:5173"},
+		AllowedOrigins: []string{"*"},
 		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders: []string{"Content-Type", "Authorization"},
 		MaxAge:         86400, // 24 hours
@@ -40,7 +40,11 @@ func CORS(cfg CORSConfig) func(http.Handler) http.Handler {
 			}
 
 			if allowed {
-				w.Header().Set("Access-Control-Allow-Origin", origin)
+				if len(cfg.AllowedOrigins) > 0 && cfg.AllowedOrigins[0] == "*" {
+					w.Header().Set("Access-Control-Allow-Origin", "*")
+				} else {
+					w.Header().Set("Access-Control-Allow-Origin", origin)
+				}
 				w.Header().
 					Set("Access-Control-Allow-Methods", joinStrings(cfg.AllowedMethods, ", "))
 				w.Header().

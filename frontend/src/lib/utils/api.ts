@@ -3,7 +3,25 @@
  * Provides typed fetch wrapper for backend API calls
  */
 
-const BASE_URL = 'http://localhost:8080/api';
+/**
+ * Dynamically determine the API base URL based on the current hostname.
+ * This allows the app to work when:
+ * - Accessing from localhost (development)
+ * - Accessing from LAN IP (mobile testing)
+ * - Accessing from a deployed domain (production)
+ */
+function getBaseUrl(): string {
+	// Check if we're in a browser environment
+	if (typeof window !== 'undefined') {
+		const { protocol, hostname } = window.location;
+		// Use the same hostname as the current page, but port 8080 for the API
+		return `${protocol}//${hostname}:8080/api`;
+	}
+	// Fallback for SSR or non-browser environments
+	return 'http://localhost:8080/api';
+}
+
+const BASE_URL = getBaseUrl();
 
 /**
  * Custom error class for API errors
