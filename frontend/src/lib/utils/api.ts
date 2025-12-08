@@ -4,22 +4,40 @@
  */
 
 /**
- * Dynamically determine the API base URL based on the current hostname.
+ * Dynamically determine the API base URL based on environment and context.
  * This allows the app to work when:
- * - Accessing from localhost (development)
- * - Accessing from LAN IP (mobile testing)
- * - Accessing from a deployed domain (production)
+ * - Development mode: Uses dynamic hostname with port 8080 (supports mobile access)
+ * - Production mode: Uses same origin (nginx proxies /api to backend)
+ * - SSR: Uses VITE_API_URL or falls back to localhost
  */
-function getBaseUrl(): string {
-	// Check if we're in a browser environment
-	if (typeof window !== 'undefined') {
+const getBaseUrl = (): string => {
+	// Server-side rendering
+	if (typeof window === 'undefined') {
+		return import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+	}
+
+	// Client-side: Check for explicit API URL override
+	const envUrl = import.meta.env.VITE_API_URL;
+
+	// Development mode: use same hostname with port 8080
+	// This allows mobile access (192.168.x.x:5173 -> 192.168.x.x:8080/api)
+	if (import.meta.env.DEV) {
+		if (envUrl) {
+			// If envUrl is 'auto', use dynamic hostname with port 8080
+			if (envUrl === 'auto') {
+				const { protocol, hostname } = window.location;
+				return `${protocol}//${hostname}:8080/api`;
+			}
+			return envUrl;
+		}
+		// Default dev behavior: dynamic hostname with port 8080
 		const { protocol, hostname } = window.location;
-		// Use the same hostname as the current page, but port 8080 for the API
 		return `${protocol}//${hostname}:8080/api`;
 	}
-	// Fallback for SSR or non-browser environments
-	return 'http://localhost:8080/api';
-}
+
+	// Production: use same origin (nginx proxy)
+	return `${window.location.origin}/api`;
+};
 
 const BASE_URL = getBaseUrl();
 
