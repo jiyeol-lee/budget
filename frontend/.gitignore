@@ -8,8 +8,13 @@ dist
 
 # Environment files
 .env
-.env.*
 !.env.example
+!.env.development
+!.env.production
+
+# Local env overrides (don't commit)
+.env.local
+.env.*.local
 
 # IDE
 .vscode

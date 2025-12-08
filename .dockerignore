@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Build outputs
+frontend/build/
+frontend/.svelte-kit/
+backend/bin/
+
+# Git
+.git/
+.gitignore
+
+# Environment (secrets!)
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docs
+*.md
+!README.md
+docs/
+frontend/docs/
+backend/docs/
+
+# Tests
+*_test.go
+*.test.ts
+coverage/
+
+# Docker files
+docker-compose*.yml
+
+# Data
+data/
+*.db
+*.sqlite
